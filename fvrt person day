@@ -1,314 +1,1329 @@
-Create a complete, beautiful, romantic, interactive single-page website as a special digital gift for my favorite person on National Favorite Person Day.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Pakkhi ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    font-family:"DM Sans",sans-serif;
+    background:#f9e9ed;
+    color:#704d58;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* =========================
+   MAIN BACKGROUND
+========================= */
+
+.page{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.8), transparent 25%),
+        radial-gradient(circle at 85% 75%, rgba(255,213,224,.7), transparent 28%),
+        linear-gradient(135deg,#f9e5eb,#f4e8f3,#e9f0df);
+}
+
+/* soft checker */
+
+.page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.3;
+    background-image:
+        linear-gradient(45deg,rgba(255,255,255,.35) 25%,transparent 25%),
+        linear-gradient(-45deg,rgba(255,255,255,.35) 25%,transparent 25%),
+        linear-gradient(45deg,transparent 75%,rgba(255,255,255,.35) 75%),
+        linear-gradient(-45deg,transparent 75%,rgba(255,255,255,.35) 75%);
+    background-size:70px 70px;
+    background-position:0 0,0 35px,35px -35px,-35px 0;
+}
+
+/* =========================
+   FLOATING PETALS
+========================= */
+
+.petal{
+    position:fixed;
+    pointer-events:none;
+    z-index:2;
+    animation:fall linear infinite;
+    opacity:.7;
+}
+
+.petal:nth-child(1){left:5%;animation-duration:9s;animation-delay:-2s;}
+.petal:nth-child(2){left:18%;animation-duration:12s;animation-delay:-5s;}
+.petal:nth-child(3){left:34%;animation-duration:10s;animation-delay:-1s;}
+.petal:nth-child(4){left:57%;animation-duration:13s;animation-delay:-7s;}
+.petal:nth-child(5){left:75%;animation-duration:11s;animation-delay:-3s;}
+.petal:nth-child(6){left:90%;animation-duration:14s;animation-delay:-9s;}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-10vh) rotate(0deg);
+    }
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen{
+    position:relative;
+    z-index:5;
+    min-height:100vh;
+    width:100%;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px 18px;
+}
+
+.screen.active{
+    display:flex;
+    animation:screenIn .8s ease;
+}
+
+@keyframes screenIn{
+    from{
+        opacity:0;
+        transform:scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    text-align:center;
+    max-width:600px;
+}
+
+.intro .small{
+    font-family:"Caveat",cursive;
+    font-size:25px;
+    color:#a56c7e;
+    margin-bottom:5px;
+}
+
+.intro h1{
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+    font-size:clamp(38px,7vw,65px);
+    color:#714957;
+    margin-bottom:10px;
+}
+
+.intro p{
+    font-family:"Caveat",cursive;
+    font-size:25px;
+    color:#8f6571;
+    margin-bottom:28px;
+}
+
+/* =========================
+   GIFT
+========================= */
+
+.gift-area{
+    position:relative;
+    width:280px;
+    height:230px;
+    margin:0 auto 20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.gift-area:hover{
+    transform:translateY(-8px) rotate(-1deg);
+}
+
+.gift-box{
+    position:absolute;
+    width:220px;
+    height:125px;
+    left:30px;
+    bottom:20px;
+    border-radius:8px 8px 18px 18px;
+    background:linear-gradient(135deg,#f7b5c7,#e994ae);
+    box-shadow:0 20px 35px rgba(121,70,86,.2);
+}
+
+.gift-box::before{
+    content:"";
+    position:absolute;
+    width:30px;
+    height:100%;
+    left:95px;
+    background:rgba(255,244,239,.65);
+}
+
+.gift-lid{
+    position:absolute;
+    width:240px;
+    height:42px;
+    left:20px;
+    bottom:132px;
+    border-radius:8px;
+    background:linear-gradient(135deg,#ffcad8,#ed9bb4);
+    box-shadow:0 8px 15px rgba(121,70,86,.18);
+}
+
+.ribbon{
+    position:absolute;
+    width:30px;
+    height:42px;
+    left:105px;
+    bottom:132px;
+    background:#fff0e9;
+    z-index:3;
+}
+
+.bow{
+    position:absolute;
+    left:90px;
+    bottom:160px;
+    z-index:4;
+}
+
+.bow span{
+    position:absolute;
+    width:58px;
+    height:38px;
+    background:#fff0e9;
+    border-radius:70% 20% 70% 20%;
+}
+
+.bow .left{
+    right:8px;
+    transform:rotate(28deg);
+}
+
+.bow .right{
+    left:8px;
+    transform:scaleX(-1) rotate(28deg);
+}
+
+.bow .center{
+    width:24px;
+    height:24px;
+    left:17px;
+    top:7px;
+    border-radius:50%;
+    background:#f8d6d7;
+}
+
+/* =========================
+   KAWAII DOLL
+========================= */
+
+.doll{
+    position:absolute;
+    right:-8px;
+    bottom:23px;
+    width:78px;
+    height:105px;
+    animation:dollFloat 3s ease-in-out infinite;
+}
+
+@keyframes dollFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+.doll-head{
+    width:65px;
+    height:65px;
+    margin:auto;
+    border-radius:50%;
+    background:#fffaf5;
+    box-shadow:inset 0 -5px 0 rgba(240,190,190,.2),0 5px 12px rgba(90,50,60,.15);
+    position:relative;
+}
+
+.doll-head::before{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:13px;
+    border-radius:50%;
+    background:#765764;
+    left:15px;
+    top:25px;
+    box-shadow:23px 0 0 #765764;
+}
+
+.doll-head::after{
+    content:"⌣";
+    position:absolute;
+    font-size:18px;
+    left:25px;
+    top:32px;
+    color:#c88491;
+}
+
+.ear{
+    position:absolute;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#f4bfc8;
+    top:8px;
+}
+
+.ear.left{left:-5px;}
+.ear.right{right:-5px;}
+
+.doll-body{
+    width:52px;
+    height:42px;
+    margin:-2px auto 0;
+    border-radius:25px 25px 15px 15px;
+    background:#e9a9bd;
+}
+
+/* =========================
+   OPEN BUTTON
+========================= */
+
+.open-btn{
+    border:0;
+    background:#fff8f5;
+    color:#a85f76;
+    padding:13px 28px;
+    border-radius:30px;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(122,70,90,.15);
+    transition:.3s;
+}
+
+.open-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(122,70,90,.22);
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu-wrap{
+    width:min(850px,100%);
+    text-align:center;
+}
+
+.menu-title{
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+    font-size:clamp(36px,6vw,58px);
+    color:#754c5c;
+}
+
+.menu-sub{
+    font-family:"Caveat",cursive;
+    font-size:23px;
+    margin:5px 0 30px;
+    color:#9c6d79;
+}
+
+.letters-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+    max-width:760px;
+    margin:auto;
+}
+
+.letter-card{
+    position:relative;
+    min-height:145px;
+    border:0;
+    padding:20px 15px;
+    cursor:pointer;
+    border-radius:18px;
+    background:rgba(255,249,245,.82);
+    box-shadow:0 10px 30px rgba(102,60,75,.13);
+    border:1px solid rgba(255,255,255,.7);
+    transition:.35s;
+    overflow:hidden;
+}
+
+.letter-card:hover{
+    transform:translateY(-8px) rotate(-1deg);
+    box-shadow:0 18px 35px rgba(102,60,75,.2);
+}
+
+.card-flower{
+    font-size:31px;
+    margin-bottom:8px;
+}
+
+.letter-card h3{
+    font-family:"Caveat",cursive;
+    font-size:28px;
+    font-weight:600;
+    color:#87576a;
+}
+
+.letter-card p{
+    font-size:12px;
+    margin-top:5px;
+    color:#9a7a82;
+}
+
+/* =========================
+   LETTER SCREEN
+========================= */
+
+.letter-screen{
+    align-items:center;
+}
+
+.letter-scene{
+    width:min(850px,100%);
+    position:relative;
+    padding:35px 15px 60px;
+}
+
+/* tulips */
+
+.tulips{
+    position:absolute;
+    font-size:55px;
+    filter:drop-shadow(0 5px 5px rgba(80,50,60,.12));
+    animation:tulipSway 4s ease-in-out infinite;
+}
+
+.tulips.left{
+    left:-15px;
+    bottom:10px;
+}
+
+.tulips.right{
+    right:-15px;
+    top:30px;
+    animation-delay:-2s;
+}
+
+@keyframes tulipSway{
+    0%,100%{transform:rotate(-2deg);}
+    50%{transform:rotate(3deg);}
+}
+
+/* =========================
+   PAPER
+========================= */
+
+.paper{
+    position:relative;
+    width:min(690px,100%);
+    margin:auto;
+    background:
+        linear-gradient(rgba(255,252,246,.96),rgba(255,248,239,.96)),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 27px,
+            rgba(170,110,110,.07) 28px
+        );
+    border-radius:8px 5px 10px 7px;
+    padding:55px clamp(25px,6vw,65px) 50px;
+    box-shadow:
+        0 25px 55px rgba(82,47,60,.2),
+        0 2px 3px rgba(82,47,60,.1);
+    transform-origin:top center;
+}
+
+/* paper edge */
+
+.paper::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px dashed rgba(177,117,128,.28);
+    pointer-events:none;
+}
+
+/* opening animation */
+
+.paper.opening{
+    animation:paperUnfold 1.1s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes paperUnfold{
+    0%{
+        opacity:0;
+        transform:perspective(900px) rotateX(-75deg) scaleY(.3);
+    }
+    45%{
+        opacity:1;
+        transform:perspective(900px) rotateX(25deg) scaleY(.85);
+    }
+    100%{
+        transform:perspective(900px) rotateX(0) scaleY(1);
+    }
+}
+
+.paper::after{
+    content:"🌷";
+    position:absolute;
+    right:25px;
+    top:18px;
+    font-size:28px;
+}
+
+.letter-number{
+    position:absolute;
+    top:18px;
+    left:22px;
+    font-size:12px;
+    color:#b17b88;
+}
+
+.paper h2{
+    font-family:"Caveat",cursive;
+    font-size:36px;
+    color:#934e66;
+    margin-bottom:22px;
+    position:relative;
+}
+
+.letter-body{
+    font-family:"Caveat",cursive;
+    font-size:22px;
+    line-height:1.55;
+    color:#694f57;
+    white-space:pre-line;
+}
+
+.letter-body::first-letter{
+    font-size:45px;
+    color:#b45d76;
+}
+
+.signature{
+    margin-top:25px;
+    font-family:"Caveat",cursive;
+    font-size:25px;
+    color:#914e64;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.nav-buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:25px;
+    position:relative;
+    z-index:10;
+}
+
+.nav-btn{
+    border:0;
+    cursor:pointer;
+    padding:11px 22px;
+    border-radius:25px;
+    background:#fff7f4;
+    color:#95566c;
+    box-shadow:0 7px 20px rgba(90,50,65,.14);
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* =========================
+   FINAL SCREEN
+========================= */
+
+.final-wrap{
+    text-align:center;
+    max-width:650px;
+}
+
+.final-flower{
+    font-size:70px;
+    animation:floatFlower 3s ease-in-out infinite;
+}
+
+@keyframes floatFlower{
+    50%{transform:translateY(-12px);}
+}
+
+.final-wrap h1{
+    font-family:"Playfair Display",serif;
+    font-style:italic;
+    font-size:clamp(38px,7vw,58px);
+    color:#744c5a;
+    margin:15px 0;
+}
+
+.final-wrap p{
+    font-family:"Caveat",cursive;
+    font-size:25px;
+    line-height:1.5;
+    color:#86626d;
+}
+
+.final-love{
+    margin-top:25px;
+    font-family:"Caveat",cursive;
+    font-size:28px;
+    color:#a6506c;
+}
+
+/* =========================
+   MINI DOLL IN FINAL
+========================= */
+
+.final-doll{
+    margin:25px auto;
+    width:100px;
+    height:105px;
+    position:relative;
+}
+
+.final-doll .doll-head{
+    width:75px;
+    height:75px;
+}
+
+.final-doll .doll-body{
+    width:60px;
+    height:45px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+    .screen{
+        padding:25px 12px;
+    }
+
+    .gift-area{
+        transform:scale(.88);
+    }
+
+    .letters-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .letter-card{
+        min-height:125px;
+    }
+
+    .letter-card h3{
+        font-size:25px;
+    }
+
+    .letter-body{
+        font-size:20px;
+        line-height:1.5;
+    }
+
+    .paper{
+        padding:48px 23px 42px;
+    }
+
+    .tulips{
+        font-size:40px;
+    }
+
+    .tulips.left{
+        left:-5px;
+    }
+
+    .tulips.right{
+        right:-5px;
+    }
+}
+
+@media(max-width:400px){
+
+    .letters-grid{
+        grid-template-columns:1fr;
+    }
+
+    .intro h1{
+        font-size:38px;
+    }
+
+    .letter-body{
+        font-size:19px;
+    }
+
+    .paper h2{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- Floating petals -->
+<div class="petal">🌷</div>
+<div class="petal">🌸</div>
+<div class="petal">♡</div>
+<div class="petal">🌷</div>
+<div class="petal">🌸</div>
+<div class="petal">♡</div>
+
+
+<!-- =====================
+     INTRO
+===================== -->
+
+<section id="intro" class="screen active">
+
+    <div class="intro">
+
+        <div class="small">A little something...</div>
+
+        <h1>For You, Pakkhi ♡</h1>
+
+        <p>
+            I made something small<br>
+            just for you.
+        </p>
+
+        <div class="gift-area" onclick="openMenu()">
+
+            <div class="bow">
+                <span class="left"></span>
+                <span class="right"></span>
+                <span class="center"></span>
+            </div>
+
+            <div class="gift-lid"></div>
+
+            <div class="gift-box">
+                <div class="ribbon"></div>
+            </div>
+
+            <div class="doll">
+                <div class="ear left"></div>
+                <div class="ear right"></div>
+                <div class="doll-head"></div>
+                <div class="doll-body"></div>
+            </div>
+
+        </div>
+
+        <button class="open-btn" onclick="openMenu()">
+            Open my little letters ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================
+     MENU
+===================== -->
+
+<section id="menu" class="screen">
+
+    <div class="menu-wrap">
+
+        <div class="menu-title">
+            My Little Letters
+        </div>
+
+        <div class="menu-sub">
+            Pick one whenever you feel like it ♡
+        </div>
+
+        <div class="letters-grid">
+
+            <button class="letter-card" onclick="openLetter(0)">
+                <div class="card-flower">🌷</div>
+                <h3>Sweetheart</h3>
+                <p>A little appreciation</p>
+            </button>
+
+            <button class="letter-card" onclick="openLetter(1)">
+                <div class="card-flower">💌</div>
+                <h3>Darling</h3>
+                <p>A question from my heart</p>
+            </button>
+
+            <button class="letter-card" onclick="openLetter(2)">
+                <div class="card-flower">🌙</div>
+                <h3>Cutipei</h3>
+                <p>A little fear</p>
+            </button>
+
+            <button class="letter-card" onclick="openLetter(3)">
+                <div class="card-flower">🌷</div>
+                <h3>Chotto Lokkhi</h3>
+                <p>The future I imagine</p>
+            </button>
+
+            <button class="letter-card" onclick="openLetter(4)">
+                <div class="card-flower">🕊️</div>
+                <h3>Pakkhi</h3>
+                <p>The things I never know how to say</p>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================
+     LETTER
+===================== -->
+
+<section id="letterScreen" class="screen letter-screen">
+
+    <div class="letter-scene">
+
+        <div class="tulips left">
+            🌷🌷
+        </div>
+
+        <div class="tulips right">
+            🌷
+        </div>
+
+        <div id="paper" class="paper">
+
+            <div id="letterNumber" class="letter-number">
+                1 / 5
+            </div>
+
+            <h2 id="letterTitle">
+                Dear Sweetheart, ♡
+            </h2>
+
+            <div id="letterBody" class="letter-body"></div>
+
+            <div class="signature">
+                Yours, ♡
+            </div>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <button class="nav-btn" onclick="backToMenu()">
+                ← Back
+            </button>
+
+            <button id="nextBtn" class="nav-btn" onclick="nextLetter()">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================
+     FINAL
+===================== -->
+
+<section id="final" class="screen">
+
+    <div class="final-wrap">
+
+        <div class="final-flower">
+            🌷
+        </div>
+
+        <h1>
+            That's everything... ♡
+        </h1>
+
+        <p>
+            I don't know what the future has written for us.
+            <br><br>
+            Maybe our story will become something beautiful.
+            <br>
+            Maybe it will remain a beautiful chapter of my life.
+            <br><br>
+            But whatever happens...
+            <br>
+            I'm genuinely grateful that I met you.
+        </p>
+
+        <div class="final-love">
+            I never wanted to force your heart.<br>
+            I only wanted you to know mine. ♡
+        </div>
+
+        <div class="final-doll">
+
+            <div class="doll-head"></div>
+            <div class="doll-body"></div>
+
+        </div>
+
+        <button class="open-btn" onclick="backToMenu()">
+            Read them again ♡
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* =========================
+   LETTER DATA
+========================= */
+
+const letters = [
+
+{
+title:"Dear Sweetheart, ♡",
+body:`I don't think I tell you this enough but having you in my life has become something I genuinely cherish.
+
+It's not only about the big moments. Sometimes it's the smallest conversations with you that stay in my mind longer than they probably should.
+
+There's something comforting about knowing I can talk to you and just be myself.
+
+I admire the way you understand things. The way you can be completely yourself without trying too hard to impress anyone.
+
+Maybe you don't even realize how special those little things about you are.
+
+I don't know where life will take us. I don't know what you will eventually feel for me.
+
+But I do know that meeting you and getting to know you has been one of those little things in life that I will always be grateful for.
+
+So if you ever wonder whether you matter to me...
+
+You do.
+
+More than I probably know how to explain.`,
+
+sign:"Yours, ♡"
+},
+
+{
+title:"Dear Darling, ♡",
+body:`I've imagined asking you this in so many different ways.
+
+Maybe with flowers. Maybe somewhere beautiful. Maybe after we've known each other for years.
+
+But somehow none of those moments felt right.
+
+So I'll just ask you honestly.
+
+Would you ever choose me?
+
+Not because I waited for you.
+
+Not because I changed myself for you.
+
+Not because you feel like you owe me something.
+
+But because after knowing me properly... after seeing my good days and my bad ones... after seeing the person I'm becoming...
+
+You genuinely want me beside you.
+
+I don't need an answer today.
+
+I just wanted you to know that somewhere in my heart there's a future I sometimes imagine where you're not just someone I love...
+
+You're the person I come home to.
+
+Would you choose that future with me someday? ♡`,
+
+sign:"Yours, always ♡"
+},
+
+{
+title:"Dear Cutipei, ♡",
+body:`There's something I don't usually say because I don't want it to sound heavy.
+
+I'm scared of losing you.
+
+Not only as someone I love but as the person whose presence slowly became important to me.
+
+Sometimes I think about what it would feel like if one day we stopped talking.
+
+If our little conversations became memories.
+
+If I had to get used to a life where I couldn't randomly tell you something that happened during my day.
+
+Maybe that's why I overthink sometimes.
+
+Maybe that's why I care more than I should.
+
+But I'm learning that loving someone doesn't mean holding onto them out of fear.
+
+If you stay...
+
+I want it to be because you genuinely want to.
+
+And if someday you decide that I'm not the person you want beside you...
+
+I'll still be thankful that for a while I got to have you in my life.
+
+But if I'm being completely honest...
+
+I really hope I don't have to learn what life feels like without you.
+
+Your Cutipei's one little fear. ♡`,
+
+sign:"Yours, ♡"
+},
 
-IMPORTANT:
-This is NOT a birthday website.
-The entire concept should be about appreciating one special person and making her feel genuinely valued and loved.
+{
+title:"Dear Chotto Lokkhi, ♡",
+body:`Maybe the biggest thing I want you to know is that I'm not trying to become a better person only so you'll choose me.
 
-TECH REQUIREMENTS:
-- Build using only HTML, CSS and vanilla JavaScript.
-- No backend.
-- No database.
-- No paid APIs.
-- No external dependencies unless absolutely necessary.
-- The project must be completely static and ready to upload to GitHub and deploy on Netlify.
-- Create clean files: index.html, style.css and script.js.
-- Make it fully responsive and optimized primarily for mobile phones.
-- All animations must work smoothly on mobile.
-- Do not use placeholder images in the final design.
-- Use the 5 personal photos I provide and make them easy to replace through simple image paths such as:
-  assets/photo1.jpg
-  assets/photo2.jpg
-  assets/photo3.jpg
-  assets/photo4.jpg
-  assets/photo5.jpg
+I'm becoming better because I want to be proud of the person I become.
 
-DESIGN DIRECTION:
-Create a premium romantic scrapbook / digital love-letter experience.
+But somewhere along the way you became a beautiful reason to take that change seriously.
 
-Visual style:
-- Soft cream / warm white background
-- Very subtle blush pink accents
-- Deep brown / burgundy text
-- Elegant serif typography for emotional headings
-- Clean modern sans-serif for body text
-- Soft paper texture
-- Polaroid photo cards
-- Handwritten-style accent text
-- Tiny floating hearts and flower petals
-- Subtle glow effects
-- Smooth fade, slide and scale animations
-- Do NOT make it look childish or overly flashy
-- Keep it elegant, intimate, mature and aesthetic
+I want to become someone who can build a life instead of just dreaming about one.
 
-The website should feel like someone spent time personally creating it rather than using a generic template.
+Someone who can take responsibility.
 
-PAGE FLOW:
+Someone who can protect the peace of the person he loves.
 
-SECTION 1 — THE INTRO
+Someone who can sit beside you years from now and still make you feel like choosing me was never a mistake.
 
-Full-screen opening.
+I don't know if that future will have us in it.
 
-Small text:
-"A little something for my favorite person"
+But if it does...
 
-Large heading:
-"Happy Favorite Person Day ♡"
+I want it to be beautiful.
 
-Below:
-"I could have just sent you a message...
-but you deserve something a little more special."
+I want late-night conversations.
 
-Add a beautiful animated button:
+Random trips.
 
-"Open this ♡"
+New places.
 
-When clicked:
-- create a soft transition
-- floating hearts appear
-- smoothly reveal the next section
-- optionally start soft background music if a local audio file exists
-- include a visible mute/unmute button
+A little home somewhere.
 
-Do not autoplay audio before the user interacts with the page.
+Two people growing together.
 
-SECTION 2 — HER FIRST PHOTO
+And maybe one day looking back at this little website and laughing about how everything started.
 
-Show photo1 in a large elegant polaroid-style frame.
+Maybe that's the future I secretly wish for.
 
-Add a small handwritten caption:
-"Some people just become special without even trying."
+Always hoping. ♡`,
 
-Main text:
-"And somehow, you became one of those people for me."
+sign:"Always hoping, ♡"
+},
 
-Add a small animated heart.
+{
+title:"Dear Pakkhi, ♡",
+body:`If you ever ask me what exactly I feel for you...
 
-SECTION 3 — A LITTLE ABOUT WHY SHE MATTERS
+I don't think I'll have a perfect answer.
 
-Heading:
-"Why you?"
+Because somewhere along the way it stopped feeling like a simple crush.
 
-Do NOT focus on physical beauty.
-Do NOT write generic compliments about her face, body or appearance.
+You became a person I think about when something good happens.
 
-Instead create three elegant cards:
+A person whose opinion matters to me.
 
-CARD 1:
-"Your presence"
-"Somehow even an ordinary conversation with you can make a normal day feel a little better."
+A person I want to make proud.
 
-CARD 2:
-"The little things"
-"It's the small things you probably don't even notice that somehow stay in my mind the longest."
+A person I want to see happy even when that happiness has nothing to do with me.
 
-CARD 3:
-"Just you"
-"I don't really need a perfect reason to appreciate you. You're simply someone who became genuinely important to me."
+And maybe that's what makes these feelings different.
 
-Use subtle card reveal animations when scrolling.
+I don't want to own your heart.
 
-SECTION 4 — PHOTO MEMORY GALLERY
+I don't want to force my way into your life.
 
-Create a beautiful scrapbook-style gallery using photo2, photo3 and photo4.
+I just want the opportunity to show you what my love could look like.
 
-Each photo should have:
-- slightly different rotation
-- polaroid frame
-- small handwritten caption
-- soft shadow
-- hover/tap animation
+Slowly.
 
-Captions should be:
+Patiently.
 
-Photo 2:
-"One of those moments I could look at more than once."
+Without pressure.
 
-Photo 3:
-"A little moment worth keeping."
+And if one day you look at me and realize that maybe...
 
-Photo 4:
-"Some pictures just feel different."
+just maybe...
 
-Make the gallery responsive and beautiful on mobile.
+there has always been a little more between us than friendship...
 
-SECTION 5 — THE LETTER
+I'll be right here.
 
-Create a centered paper-letter/card section.
+Not waiting for you to owe me an answer.
 
-Heading:
-"Dear favorite person,"
+Just hoping that someday your heart finds its way to mine.
 
-Text:
+Until then...
 
-"I don't know if there is a perfect way to explain what you mean to me.
+Take care, my Pakkhi. ♡
 
-You became special to me in a way I never really planned. And maybe that's what makes it even more meaningful.
+Yours, always.`,
 
-There are people we meet and simply know.
-Then there are people who slowly become a part of our thoughts, our little routines and our favorite moments.
+sign:"Yours, always ♡"
+}
 
-You're one of those people for me.
+];
 
-I just wanted you to know that you're appreciated.
-Not because today says I should appreciate you...
-but because having you in my life is something I genuinely value."
 
-Keep the letter visually elegant with handwritten-paper styling.
+/* =========================
+   VARIABLES
+========================= */
 
-SECTION 6 — ONE LAST PHOTO
+let currentLetter = 0;
 
-Use photo5 as the main final portrait.
 
-Create a cinematic full-width image section with a soft dark overlay.
+/* =========================
+   SCREEN SWITCH
+========================= */
 
-Text appearing slowly over the image:
+function showScreen(id){
 
-"If I had to choose my favorite person..."
+    document.querySelectorAll(".screen").forEach(screen=>{
+        screen.classList.remove("active");
+    });
 
-Pause for a moment.
+    document.getElementById(id).classList.add("active");
 
-Then reveal:
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
 
-"I already know who I'd choose. ♡"
 
-SECTION 7 — FINAL MESSAGE
+/* =========================
+   OPEN MENU
+========================= */
 
-Use a warm minimal background.
+function openMenu(){
 
-Large text:
+    const gift = document.querySelector(".gift-area");
 
-"So today, I just wanted to remind you..."
+    gift.style.transform="scale(1.15) rotate(2deg)";
 
-Then:
+    setTimeout(()=>{
+        showScreen("menu");
+    },500);
+}
 
-"You are someone's favorite person."
 
-After a short animation:
+/* =========================
+   OPEN LETTER
+========================= */
 
-"And that someone is me. 🤍"
+function openLetter(index){
 
-Then:
+    currentLetter=index;
 
-"Happy National Favorite Person Day"
+    updateLetter();
 
-Under it:
+    showScreen("letterScreen");
 
-"Thank you for simply being you."
+    const paper=document.getElementById("paper");
 
-Add a small heart animation.
+    paper.classList.remove("opening");
 
-SECTION 8 — FINAL BUTTON
+    void paper.offsetWidth;
 
-Create one final button:
+    paper.classList.add("opening");
+}
 
-"One more thing →"
 
-When clicked, reveal a hidden final message:
+/* =========================
+   UPDATE LETTER
+========================= */
 
-"I don't know where life takes us from here,
-but I'm genuinely grateful that our paths crossed.
+function updateLetter(){
 
-And if you ever forget how special you are,
-come back to this little page.
+    const letter=letters[currentLetter];
 
-I'll leave this here as a reminder. ♡"
+    document.getElementById("letterTitle").textContent=letter.title;
 
-At the bottom:
+    document.getElementById("letterBody").textContent=letter.body;
 
-"Made with a little too much thought and a lot of sincerity."
+    document.querySelector(".signature").textContent=letter.sign;
 
-Do not include my name unless I explicitly provide it.
+    document.getElementById("letterNumber").textContent=
+        `${currentLetter+1} / ${letters.length}`;
 
-INTERACTIONS:
-- Smooth scrolling
-- Section reveal animations
-- Polaroid photo entrance animations
-- Floating hearts
-- Very subtle falling petals
-- Button hover/tap effects
-- Typewriter effect ONLY for 1–2 short emotional lines, not the whole website
-- Progress indicator showing the visitor's journey through the page
-- Add a small music control in the corner
-- Add a "Replay" button at the very bottom that smoothly returns to the beginning
-- Respect prefers-reduced-motion for accessibility
+    const nextBtn=document.getElementById("nextBtn");
 
-MUSIC:
-Create support for a local audio file:
-assets/music.mp3
+    if(currentLetter===letters.length-1){
 
-Do not automatically play music on page load.
-After the user clicks "Open this ♡", music may begin if the browser allows it.
-Include a small elegant mute/unmute button.
+        nextBtn.textContent="Finish ♡";
 
-PHOTO HANDLING:
-Use the exact personal photos I upload.
-Do not generate AI replacements.
-Do not modify faces.
-Do not apply heavy filters.
-Use object-fit: cover where appropriate while keeping faces visible.
-On mobile, make sure the photos do not crop important parts of the subject.
+    }else{
 
-MOBILE EXPERIENCE:
-This is extremely important.
+        nextBtn.textContent="Next →";
 
-Design it primarily for a smartphone.
-Use:
-- large readable text
-- comfortable spacing
-- touch-friendly buttons
-- no horizontal scrolling
-- smooth vertical storytelling
-- photos should look beautiful on a phone screen
-- avoid tiny text
-- keep animations lightweight
+    }
+}
 
-SEO / META:
-Set:
-Title:
-"For My Favorite Person ♡"
 
-Description:
-"A little digital surprise made for someone truly special."
+/* =========================
+   NEXT LETTER
+========================= */
 
-Add proper viewport meta tags and social sharing metadata.
+function nextLetter(){
 
-CODE QUALITY:
-- Clean semantic HTML
-- Well-organized CSS
-- Modular JavaScript
-- Helpful comments
-- No unnecessary libraries
-- No console errors
-- All buttons must work
-- All navigation must work
-- Make sure the website works by simply opening index.html
-- Make sure it is ready for GitHub + Netlify deployment
+    if(currentLetter < letters.length-1){
 
-IMPORTANT EMOTIONAL DIRECTION:
-The website should feel personal, sincere and mature.
-Avoid excessive "I love you" repetition.
-Avoid cheesy pickup lines.
-Avoid overdoing hearts.
-Focus on appreciation, emotional connection and the feeling that this page was created specifically for one person.
+        currentLetter++;
 
-FINAL OUTPUT:
-Provide the complete project code with:
-1. index.html
-2. style.css
-3. script.js
+        updateLetter();
 
-Also provide the exact folder structure:
+        const paper=document.getElementById("paper");
 
-favorite-person-day/
-├── index.html
-├── style.css
-├── script.js
-└── assets/
-    ├── photo1.jpg
-    ├── photo2.jpg
-    ├── photo3.jpg
-    ├── photo4.jpg
-    ├── photo5.jpg
-    └── music.mp3
+        paper.classList.remove("opening");
 
-Make the final result feel like a premium personalized digital love letter rather than a normal website.
+        void paper.offsetWidth;
+
+        paper.classList.add("opening");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        showScreen("final");
+
+    }
+}
+
+
+/* =========================
+   BACK TO MENU
+========================= */
+
+function backToMenu(){
+
+    showScreen("menu");
+
+}
+
+
+/* =========================
+   RANDOM FLOATING HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.innerHTML=["♡","♥","🌷","✿"][Math.floor(Math.random()*4)];
+
+    heart.style.position="fixed";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.bottom="-30px";
+    heart.style.fontSize=(12+Math.random()*20)+"px";
+    heart.style.opacity=".5";
+    heart.style.pointerEvents="none";
+    heart.style.zIndex="3";
+
+    const duration=5+Math.random()*5;
+
+    heart.style.transition=`transform ${duration}s linear, opacity ${duration}s linear`;
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.style.transform=
+            `translateY(-110vh) rotate(${Math.random()*360}deg)`;
+
+        heart.style.opacity="0";
+
+    },50);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },duration*1000);
+
+}
+
+setInterval(createHeart,900);
+
+
+/* =========================
+   TYPEWRITER FEEL
+========================= */
+
+document.addEventListener("click",function(e){
+
+    if(e.target.closest(".letter-card")){
+
+        document.body.style.cursor="wait";
+
+        setTimeout(()=>{
+            document.body.style.cursor="default";
+        },700);
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
